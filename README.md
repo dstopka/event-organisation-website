@@ -1,5 +1,5 @@
-# Witryna do organizacji wydarzeñ
+# Witryna do organizacji wydarzeÅ„
 
-- Aplikacja pozwala na zorganizowanie wydarzeñ, które posiadaj¹ pewn¹ ograniczon¹ iloœæ miejsc a przez to wymagaj¹ posiadania biletu (p³atnego lub darmowego).
-- Dowolny u¿ytkownik mo¿e utworzyæ wydarzenie, dodaæ szczegó³owy opis wraz z grafikami itp.. Miejsce wydarzenia mo¿na podgl¹dn¹æ na mapie oraz w kalendarzu. Wydarzenie mo¿na dodaæ do swojego kalendarza.
-- Ka¿de wydarzenia posiada jedno lub wiêcej wyst¹pieñ. Na ka¿de wyst¹pienie mo¿na zakupiæ bilet. Po kupnie biletu mo¿liwe jest jego wyeksportowanie w formacie PDF.
+- Aplikacja pozwala na zorganizowanie wydarzeÅ„, ktÃ³re posiadajÄ… pewnÄ… ograniczonÄ… iloÅ›Ä‡ miejsc a przez to wymagajÄ… posiadania biletu (pÅ‚atnego lub darmowego).
+- Dowolny uÅ¼ytkownik moÅ¼e utworzyÄ‡ wydarzenie, dodaÄ‡ szczegÃ³Å‚owy opis wraz z grafikami itp.. Miejsce wydarzenia moÅ¼na podglÄ…dnÄ…Ä‡ na mapie oraz w kalendarzu. Wydarzenie moÅ¼na dodaÄ‡ do swojego kalendarza.
+- KaÅ¼de wydarzenia posiada jedno lub wiÄ™cej wystÄ…pieÅ„. Na kaÅ¼de wystÄ…pienie moÅ¼na zakupiÄ‡ bilet. Po kupnie biletu moÅ¼liwe jest jego wyeksportowanie w formacie PDF.
