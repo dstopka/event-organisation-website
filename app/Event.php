@@ -24,10 +24,16 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUserId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\EventDate[] $eventDates
+ * @property-read int|null $event_dates_count
  */
 class Event extends Model
 {
     public function user(){
         return $this->belongsTo('App\User');
+    }
+
+    public function eventDates(){
+        return $this->hasMany('App\EventDate');
     }
 }
