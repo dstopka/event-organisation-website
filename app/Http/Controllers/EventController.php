@@ -14,7 +14,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('events.index');
+        $events = Event::all();
+        return view('events.index')->withEvents($events);
     }
 
     /**
@@ -35,7 +36,17 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+        $event = new Event();
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->user_id = \Auth::id();
+        $event->save();
+
+        return redirect()->route('events.show',$event);
     }
 
     /**
@@ -46,7 +57,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        $user = $event->user;
+        return view('events.show')->withEvent($event)->withUser($user);
     }
 
     /**
@@ -80,6 +92,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+
+        return redirect()->route('events.index');
     }
 }
