@@ -74,22 +74,9 @@
                 //         }
                 //     });
                 // },
-                // eventClick: function (event) {
-                //     var deleteMsg = confirm("Do you really want to delete?");
-                //     if (deleteMsg) {
-                //         $.ajax({
-                //             type: "POST",
-                //             url: SITEURL + '/fullcalendareventmaster/delete',
-                //             data: "&id=" + event.id,
-                //             success: function (response) {
-                //                 if(parseInt(response) > 0) {
-                //                     $('#calendar').fullCalendar('removeEvents', event.id);
-                //                     displayMessage("Deleted Successfully");
-                //                 }
-                //             }
-                //         });
-                //     }
-                // }
+                eventClick: function (event) {
+                    window.location = '/events/' + event['event_id'];
+                }
 
             });
         });
