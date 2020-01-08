@@ -7,7 +7,7 @@
                 <h2>{{ $event->title }}</h2>
                 <h4>Added by {{ $user->name }} ({{ $user->email }})</h4>
 
-                <!--@markdown($event->description)-->
+                @markdown($event->description)
 
                 <a href="{{ route('events.edit', $event) }}">edit</a>
 
