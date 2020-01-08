@@ -39,9 +39,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('comments.index') }}">Comments</a>
-                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -83,13 +80,6 @@
                 </div>
             </div>
         </nav>
-
-        <div class="row justify-content-center">
-            <div class="col-sm-10">
-                {{ Breadcrumbs::render() }}
-            </div>
-        </div>
-
         <main class="py-4">
             @yield('content')
         </main>
