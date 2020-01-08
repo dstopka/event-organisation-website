@@ -9,9 +9,11 @@
 
 @section('scripts')
     <script>
+
         $(document).ready(function () {
 
-            var SITEURL = "{{url('/')}}";
+            var events = {!! json_encode($data) !!};
+            console.log(events);
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -20,7 +22,7 @@
 
             var calendar = $('#calendar').fullCalendar({
                 editable: true,
-                events: SITEURL,
+                events: events,
                 displayEventTime: true,
                 editable: true,
                 eventRender: function (event, element, view) {
@@ -30,8 +32,8 @@
                         event.allDay = false;
                     }
                 },
-                selectable: true,
-                selectHelper: true,
+                // selectable: true,
+                // selectHelper: true,
                 // select: function (start, end, allDay) {
                 //     var title = prompt('Event Title:');
                 //
@@ -60,42 +62,43 @@
                 //     calendar.fullCalendar('unselect');
                 // },
 
-                eventDrop: function (event, delta) {
-                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                    $.ajax({
-                        url: SITEURL + '/fullcalendareventmaster/update',
-                        data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,
-                        type: "POST",
-                        success: function (response) {
-                            displayMessage("Updated Successfully");
-                        }
-                    });
-                },
-                eventClick: function (event) {
-                    var deleteMsg = confirm("Do you really want to delete?");
-                    if (deleteMsg) {
-                        $.ajax({
-                            type: "POST",
-                            url: SITEURL + '/fullcalendareventmaster/delete',
-                            data: "&id=" + event.id,
-                            success: function (response) {
-                                if(parseInt(response) > 0) {
-                                    $('#calendar').fullCalendar('removeEvents', event.id);
-                                    displayMessage("Deleted Successfully");
-                                }
-                            }
-                        });
-                    }
-                }
+                // eventDrop: function (event, delta) {
+                //     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                //     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                //     $.ajax({
+                //         url: SITEURL + '/fullcalendareventmaster/update',
+                //         data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,
+                //         type: "POST",
+                //         success: function (response) {
+                //             displayMessage("Updated Successfully");
+                //         }
+                //     });
+                // },
+                // eventClick: function (event) {
+                //     var deleteMsg = confirm("Do you really want to delete?");
+                //     if (deleteMsg) {
+                //         $.ajax({
+                //             type: "POST",
+                //             url: SITEURL + '/fullcalendareventmaster/delete',
+                //             data: "&id=" + event.id,
+                //             success: function (response) {
+                //                 if(parseInt(response) > 0) {
+                //                     $('#calendar').fullCalendar('removeEvents', event.id);
+                //                     displayMessage("Deleted Successfully");
+                //                 }
+                //             }
+                //         });
+                //     }
+                // }
 
             });
         });
 
-        function displayMessage(message) {
-            $(".response").html(
-            "+message+");
-            setInterval(function() { $(".success").fadeOut(); }, 1000);
-        }
+        // function displayMessage(message) {
+        //     $(".response").html(
+        //     "+message+");
+        //     setInterval(function() { $(".success").fadeOut(); }, 1000);
+        // }
     </script>
 @endsection
+

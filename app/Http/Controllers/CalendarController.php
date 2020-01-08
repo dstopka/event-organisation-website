@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\EventDate;
+use Doctrine\DBAL\Events;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Redirect,Response;
 
@@ -11,16 +14,9 @@ class CalendarController extends Controller
 
     public function index()
     {
-        if(request()->ajax())
-        {
-
-            $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
-            $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');
-
-            $data = Event::whereDate('start', '>=', $start)->whereDate('end',   '<=', $end)->get(['id','title','start', 'end']);
-            return Response::json($data);
-        }
-        return view('calendars.index');
+        $dates = EventDate::all();
+        $data = DB::select('select * from events A join event_dates B on A.id = B.event_id');
+        return view('calendars.index', compact('data'));
     }
 
 
