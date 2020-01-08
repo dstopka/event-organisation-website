@@ -43,12 +43,15 @@ class EventController extends Controller
             'start' => 'required',
             'end' => 'required',
             'places' => 'required',
-            'price' => 'required'
+            'price' => 'required',
         ]);
         $event = new Event();
         $event->title = $request->title;
         $event->description = $request->description;
         $event->user_id = \Auth::id();
+        $event->price = $request->price;
+        $event->places = $request->places;
+        $event->isFree = false;
         $event->save();
 
         $eventDate = new EventDate();
@@ -80,7 +83,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('events.edit')->withEvent($event);
     }
 
     /**
@@ -92,7 +95,18 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        if(isset($request->start) and isset($request->end))
+        {
+            $eventDate = new EventDate();
+            $eventDate->event_id = $event->id;
+            $eventDate->start = $request->start;
+            $eventDate->end = $request->end;
+            $eventDate->free_places = $event->places;
+            $eventDate->save();
+            return redirect()->route('events.edit', $event);
+        }
+
+        return redirect()->route('events.show', $event);
     }
 
     /**
@@ -103,8 +117,16 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+        foreach ($event->eventDates as $eventDate)
+            $eventDate->delete();
+
         $event->delete();
 
         return redirect()->route('events.index');
+    }
+
+    public function destroyEventDate(EventDate $eventDate)
+    {
+        $eventDate->delete();
     }
 }

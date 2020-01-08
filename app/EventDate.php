@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\EventDate whereUpdatedAt($value)
  * @mixin \Eloquent
  */
+
 class EventDate extends Model
 {
     public function event()
