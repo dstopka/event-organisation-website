@@ -5,7 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h2>{{ $event->title }}</h2>
-                <h4>Added by {{ $user->name }} ({{ $user->email }})</h4>
+                <h4>Added by {{ $event->user->name }} ({{ $event->user->email }})</h4>
+                <h4>Available dates:</h4>
+                @foreach( $event->eventDates as $eventDate )
+                    Start: {{ $eventDate->start }} end: {{ $eventDate->end }}
+                    <br>
+                @endforeach
 
                 @markdown($event->description)
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\EventDate;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -38,13 +39,24 @@ class EventController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'start' => 'required',
+            'end' => 'required',
+            'places' => 'required',
+            'price' => 'required'
         ]);
         $event = new Event();
         $event->title = $request->title;
         $event->description = $request->description;
         $event->user_id = \Auth::id();
         $event->save();
+
+        $eventDate = new EventDate();
+        $eventDate->event_id = $event->id;
+        $eventDate->start = $request->start;
+        $eventDate->end = $request->end;
+        $eventDate->free_places = $request->places;
+        $eventDate->save();
 
         return redirect()->route('events.show',$event);
     }
@@ -57,8 +69,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $user = $event->user;
-        return view('events.show')->withEvent($event)->withUser($user);
+        return view('events.show')->withEvent($event);
     }
 
     /**
