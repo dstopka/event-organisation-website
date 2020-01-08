@@ -32,33 +32,33 @@
                 },
                 selectable: true,
                 selectHelper: true,
-                select: function (start, end, allDay) {
-                    var title = prompt('Event Title:');
-
-                    if (title) {
-                        var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                        var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-
-                        $.ajax({
-                            url: SITEURL + "/fullcalendareventmaster/create",
-                            data: 'title=' + title + '&start=' + start + '&end=' + end,
-                            type: "POST",
-                            success: function (data) {
-                                displayMessage("Added Successfully");
-                            }
-                        });
-                        calendar.fullCalendar('renderEvent',
-                            {
-                                title: title,
-                                start: start,
-                                end: end,
-                                allDay: allDay
-                            },
-                            true
-                        );
-                    }
-                    calendar.fullCalendar('unselect');
-                },
+                // select: function (start, end, allDay) {
+                //     var title = prompt('Event Title:');
+                //
+                //     if (title) {
+                //         var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                //         var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                //
+                //         $.ajax({
+                //             url: SITEURL + "/fullcalendareventmaster/create",
+                //             data: 'title=' + title + '&start=' + start + '&end=' + end,
+                //             type: "POST",
+                //             success: function (data) {
+                //                 displayMessage("Added Successfully");
+                //             }
+                //         });
+                //         calendar.fullCalendar('renderEvent',
+                //             {
+                //                 title: title,
+                //                 start: start,
+                //                 end: end,
+                //                 allDay: allDay
+                //             },
+                //             true
+                //         );
+                //     }
+                //     calendar.fullCalendar('unselect');
+                // },
 
                 eventDrop: function (event, delta) {
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
