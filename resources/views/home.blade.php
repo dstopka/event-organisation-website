@@ -9,8 +9,8 @@
                             Welcome to EventHub!
                         </div>
                                         <div class="links">
-                                            <a href="{{-- route('events.create') --}}">Create Event</a>
-                                            <a href="{{-- route('events.index') --}}">Events</a>
+                                            <a href="{{ route('events.create') }}">Create Event</a>
+                                            <a href="{{ route('events.index') }}">Events</a>
                                             <a href="{{-- route('calendar.index') --}}">My Calendar</a>
                                         </div>
                     </div>
