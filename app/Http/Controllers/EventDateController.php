@@ -49,6 +49,7 @@ class EventDateController extends Controller
      */
     public function destroy(EventDate $eventDate)
     {
-        //
+        $eventDate->delete();
+        return redirect()->back();
     }
 }

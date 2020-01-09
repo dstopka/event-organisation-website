@@ -33,21 +33,28 @@
                 </form>
 
                 <h2>Edit event's dates:</h2>
+                <table>
+                    <tr>
+                        <th>Date/Time start</th>
+                        <th>Date/Time end</th>
+                    </tr>
+                    @foreach($event->eventDates as $eventDate)
+                        <tr>
+                            <td>{{ $eventDate->start }}</td>
+                            <td>{{ $eventDate->end }}</td>
+                            <td><form method="post" action="{{ route('event_date.destroy', $eventDate) }}">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <input type="submit" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
                 <form method="post" action="{{ route('events.update', $event) }}">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <table>
-                        <tr>
-                            <th>Date/Time start</th>
-                            <th>Date/Time end</th>
-                        </tr>
-                        @foreach($event->eventDates as $eventDate)
-                            <tr>
-                                <td>{{ $eventDate->start }}</td>
-                                <td>{{ $eventDate->end }}</td>
-                                <td><a href="{{-- route('events.destroyEventDate',$eventDate) --}}">delete</a> </td>
-                            </tr>
-                        @endforeach
                         <tr>
                             <td><input type="datetime-local" name="start" value="{{ old("start") }}"></td>
                             <td><input type="datetime-local" name="end" value="{{ old("end") }}"></td>
