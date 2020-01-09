@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Policies\EventPolicy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
