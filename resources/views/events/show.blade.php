@@ -8,7 +8,7 @@
                 <h4>Added by {{ $event->user->name }} ({{ $event->user->email }})</h4>
                 <h4>Available dates:</h4>
                 @foreach( $event->eventDates as $eventDate )
-                    Start: {{ $eventDate->start }} end: {{ $eventDate->end }}
+                    <a href="{{ route("event_date.show",$eventDate) }}"> Start: {{ $eventDate->start }} end: {{ $eventDate->end }}</a>
                     <br>
                 @endforeach
 

@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::resource('/events','EventController')->middleware('auth');
 Route::resource('/calendars', "CalendarController")->middleware('auth');
+Route::resource('/event_date',"EventDateController",['only' => ['show','destroy']])->middleware('auth');
 
 Auth::routes();
 
