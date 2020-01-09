@@ -105,6 +105,21 @@ class EventController extends Controller
             $eventDate->save();
             return redirect()->route('events.edit', $event);
         }
+        else
+        {
+            $this->validate($request, [
+                'title' => 'required',
+                'description' => 'required',
+                'places' => 'required',
+                'price' => 'required',
+            ]);
+            $event->title = $request->title;
+            $event->description = $request->description;
+            $event->price = $request->price;
+            $event->places = $request->places;
+            $event->isFree = false;
+            $event->save();
+        }
 
         return redirect()->route('events.show', $event);
     }

@@ -14,13 +14,17 @@
 
                 @markdown($event->description)
 
+                @can('update',$event)
                 <a href="{{ route('events.edit', $event) }}">edit</a>
+                @endcan
 
+                @can('delete',$event)
                 <form method="post" action="{{ route('events.destroy', $event) }}">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
                     <input type="submit" value="Delete">
                 </form>
+                @endcan
 
                 <a href="{{ route('events.index') }}">Return to events list</a>
             </div>

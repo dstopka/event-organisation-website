@@ -16,7 +16,7 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('events.store') }}">
+                <form method="post" action="{{ route('events.update',$event) }}">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     Title: <input type="text" name="title" value="{{ $event->title }}">
