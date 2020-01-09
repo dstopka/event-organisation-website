@@ -8,6 +8,8 @@
                 Start: {{ $eventDate->start }} end: {{ $eventDate->end }}
                 <br>
                 <strong>Free places: {{ $eventDate->free_places }}</strong>
+                <br>
+                <strong><a href="{{ $eventDate->id."/join" }}">Join</a></strong>
             </div>
         </div>
     </div>
