@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Policies\EventPolicy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,6 +27,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUserId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\EventDate[] $eventDates
  * @property-read int|null $event_dates_count
+ * @property int $places
+ * @property int $price
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Event wherePlaces($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Event wherePrice($value)
+ * @property int $isFree
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereIsFree($value)
  */
 class Event extends Model
 {

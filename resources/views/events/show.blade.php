@@ -8,19 +8,23 @@
                 <h4>Added by {{ $event->user->name }} ({{ $event->user->email }})</h4>
                 <h4>Available dates:</h4>
                 @foreach( $event->eventDates as $eventDate )
-                    Start: {{ $eventDate->start }} end: {{ $eventDate->end }}
+                    <a href="{{ route("event_date.show",$eventDate) }}"> Start: {{ $eventDate->start }} end: {{ $eventDate->end }}</a>
                     <br>
                 @endforeach
 
                 @markdown($event->description)
 
+                @can('update',$event)
                 <a href="{{ route('events.edit', $event) }}">edit</a>
+                @endcan
 
+                @can('delete',$event)
                 <form method="post" action="{{ route('events.destroy', $event) }}">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
                     <input type="submit" value="Delete">
                 </form>
+                @endcan
 
                 <a href="{{ route('events.index') }}">Return to events list</a>
             </div>
