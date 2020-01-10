@@ -14,5 +14,6 @@
 
 @section('scripts')
 <script>var events = {!! json_encode($data) !!};</script>
+<script src="{{ asset('js/calendar.js') }} "></script>
 @endsection
 
