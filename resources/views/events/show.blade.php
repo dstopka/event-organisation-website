@@ -9,6 +9,11 @@
 
                 @markdown($event->description)
 
+                @foreach ($images as $image)
+                    <img src="{{'/'.$image->name}}" alt="{{basename($image->name)}}">
+                @endforeach
+
+
                 <a href="{{ route('events.edit', $event) }}">edit</a>
 
                 <form method="post" action="{{ route('events.destroy', $event) }}">

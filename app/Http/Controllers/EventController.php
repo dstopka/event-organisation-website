@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -52,26 +54,15 @@ class EventController extends Controller
 
         if ($request->has('images'))
         {
-            $allowedFileExtension = ['jpg', 'jpeg', 'png'];
             $files = $request->file('images');
             foreach ($files as $file) {
-                $name = $file->getClientOriginalName();
-                $extension = $file->getClientOriginalExtension();
-                $check = in_array($extension, $allowedFileExtension);
 
-                if ($check) {
+                $name = $file->store('public/images/'.$event->id);
+                $image = new Image();
+                $image->event_id = $event->id;
+                $image->name = 'storage/images/'.$event->id.'/'.basename($name);
+                $image->save();
 
-                    $name = $file->store('images/'.$event->id);
-                    $image = new Image();
-                    $image->event_id = $event->id;
-                    $image->name = $name;
-                    $image->save();
-
-                    echo "Uploaded succesfully";
-                }
-                else {
-                    echo '<div class="alert alert-warning"><strong>Warning!</strong>Acceptable only jpeg and png formats</div>';
-                }
             }
 
         }
@@ -87,8 +78,10 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $images = $event->images;
         $user = $event->user;
-        return view('events.show')->withEvent($event)->withUser($user);
+//        return view('events.show')->withEvent($event)->withUser($user)->withImages($images);
+        return view('events.show', compact('event', 'images', 'user'));
     }
 
     /**
@@ -122,6 +115,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+        DB::table('images')->where('event_id', $event->id)->delete();
+        Storage::deleteDirectory('public/images/'.$event->id);
         $event->delete();
 
         return redirect()->route('events.index');

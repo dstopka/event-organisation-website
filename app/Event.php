@@ -18,12 +18,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property mixed images
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUserId($value)
+ * @property-read int|null $images_count
  */
 class Event extends Model
 {

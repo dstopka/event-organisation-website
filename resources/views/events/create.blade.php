@@ -22,7 +22,7 @@
                     <br>
                     Description: <input type="text" name="description" value="{{ old("description") }}">
                     <br>
-                    Images: <input type="file" name="images[]"/>
+                    Images: <input type="file" name="images[]" multiple="multiple"/>
                     <br>
                     <input type="submit" value="Create">
                 </form>
