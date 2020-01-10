@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Policies\EventPolicy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -25,7 +26,18 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUserId($value)
+<<<<<<< HEAD
  * @property-read int|null $images_count
+=======
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\EventDate[] $eventDates
+ * @property-read int|null $event_dates_count
+ * @property int $places
+ * @property int $price
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Event wherePlaces($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Event wherePrice($value)
+ * @property int $isFree
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereIsFree($value)
+>>>>>>> b89eda3e08ee6d1147d730bc31ef4dedefbd7051
  */
 class Event extends Model
 {
@@ -33,7 +45,11 @@ class Event extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function images() {
+    public function images(){
         return $this->hasMany('App\Image');
+    }
+
+    public function eventDates(){
+        return $this->hasMany('App\EventDate');
     }
 }

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+
 use App\Image;
+use App\EventDate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+
 
 class EventController extends Controller
 {
@@ -17,8 +20,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
-        return view('events.index')->withEvents($events);
+
+        $data = DB::select('select A.title, B.id, DATE_FORMAT(B.start, "%b %d") as day,
+                            DATE_FORMAT(B.start, "%l %i %p") as hour, B.free_places
+                             from events A join event_dates B on A.id = B.event_id order by B.start');
+
+
+        return view('events.index')->withEvents($data);
     }
 
     /**
@@ -43,14 +51,22 @@ class EventController extends Controller
             'title' => 'required',
             'description' => 'required',
             'images' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg'
+            'images.*' => 'image|mimes:jpeg,png,jpg',
+            'start' => 'required',
+            'end' => 'required',
+            'places' => 'required',
+            'price' => 'required',
         ]);
 
         $event = new Event();
         $event->title = $request->title;
         $event->description = $request->description;
         $event->user_id = \Auth::id();
+        $event->price = $request->price;
+        $event->places = $request->places;
+        $event->isFree = false;
         $event->save();
+
 
         if ($request->has('images'))
         {
@@ -64,8 +80,14 @@ class EventController extends Controller
                 $image->save();
 
             }
-
         }
+
+        $eventDate = new EventDate();
+        $eventDate->event_id = $event->id;
+        $eventDate->start = $request->start;
+        $eventDate->end = $request->end;
+        $eventDate->free_places = $request->places;
+        $eventDate->save();
 
         return redirect()->route('events.show',$event);
     }
@@ -80,7 +102,6 @@ class EventController extends Controller
     {
         $images = $event->images;
         $user = $event->user;
-//        return view('events.show')->withEvent($event)->withUser($user)->withImages($images);
         return view('events.show', compact('event', 'images', 'user'));
     }
 
@@ -92,7 +113,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('events.edit')->withEvent($event);
     }
 
     /**
@@ -104,7 +125,33 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        if(isset($request->start) and isset($request->end))
+        {
+            $eventDate = new EventDate();
+            $eventDate->event_id = $event->id;
+            $eventDate->start = $request->start;
+            $eventDate->end = $request->end;
+            $eventDate->free_places = $event->places;
+            $eventDate->save();
+            return redirect()->route('events.edit', $event);
+        }
+        else
+        {
+            $this->validate($request, [
+                'title' => 'required',
+                'description' => 'required',
+                'places' => 'required',
+                'price' => 'required',
+            ]);
+            $event->title = $request->title;
+            $event->description = $request->description;
+            $event->price = $request->price;
+            $event->places = $request->places;
+            $event->isFree = false;
+            $event->save();
+        }
+
+        return redirect()->route('events.show', $event);
     }
 
     /**
@@ -115,10 +162,21 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+
         DB::table('images')->where('event_id', $event->id)->delete();
         Storage::deleteDirectory('public/images/'.$event->id);
+
+        foreach ($event->eventDates as $eventDate)
+            $eventDate->delete();
+
+
         $event->delete();
 
         return redirect()->route('events.index');
+    }
+
+    public function destroyEventDate(EventDate $eventDate)
+    {
+        $eventDate->delete();
     }
 }
