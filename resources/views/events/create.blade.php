@@ -16,7 +16,7 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('events.store') }}">
+                <form method="post" action="{{ route('events.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     Title: <input type="text" name="title" value="{{ old("title") }}">
                     <br>
@@ -38,6 +38,8 @@
                     Price: <input type="number" name="price" value="{{ old("price") }}">$
                     <br>
                     Is free? <input type="checkbox" name="isFree" value="{{ old("isFree") }}">
+                    <br>
+                    Images: <input type="file" name="images[]" multiple="multiple"/>
                     <br>
                     <input type="submit" value="Create">
                 </form>

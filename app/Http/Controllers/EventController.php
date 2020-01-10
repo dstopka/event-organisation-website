@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+
+use App\Image;
 use App\EventDate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class EventController extends Controller
 {
@@ -46,11 +50,14 @@ class EventController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
+            'images' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg',
             'start' => 'required',
             'end' => 'required',
             'places' => 'required',
             'price' => 'required',
         ]);
+
         $event = new Event();
         $event->title = $request->title;
         $event->description = $request->description;
@@ -59,6 +66,21 @@ class EventController extends Controller
         $event->places = $request->places;
         $event->isFree = false;
         $event->save();
+
+
+        if ($request->has('images'))
+        {
+            $files = $request->file('images');
+            foreach ($files as $file) {
+
+                $name = $file->store('public/images/'.$event->id);
+                $image = new Image();
+                $image->event_id = $event->id;
+                $image->name = 'storage/images/'.$event->id.'/'.basename($name);
+                $image->save();
+
+            }
+        }
 
         $eventDate = new EventDate();
         $eventDate->event_id = $event->id;
@@ -78,7 +100,9 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('events.show')->withEvent($event);
+        $images = $event->images;
+        $user = $event->user;
+        return view('events.show', compact('event', 'images', 'user'));
     }
 
     /**
@@ -138,8 +162,13 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+
+        DB::table('images')->where('event_id', $event->id)->delete();
+        Storage::deleteDirectory('public/images/'.$event->id);
+
         foreach ($event->eventDates as $eventDate)
             $eventDate->delete();
+
 
         $event->delete();
 

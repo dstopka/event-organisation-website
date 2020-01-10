@@ -14,6 +14,11 @@
 
                 @markdown($event->description)
 
+                @foreach ($images as $image)
+                    <img src="{{'/'.$image->name}}" alt="{{basename($image->name)}}">
+                @endforeach
+
+
                 @can('update',$event)
                 <a href="{{ route('events.edit', $event) }}">edit</a>
                 @endcan
