@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Image;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -38,13 +39,42 @@ class EventController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'images' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg'
         ]);
+
         $event = new Event();
         $event->title = $request->title;
         $event->description = $request->description;
         $event->user_id = \Auth::id();
         $event->save();
+
+        if ($request->has('images'))
+        {
+            $allowedFileExtension = ['jpg', 'jpeg', 'png'];
+            $files = $request->file('images');
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $check = in_array($extension, $allowedFileExtension);
+
+                if ($check) {
+
+                    $name = $file->store('images/'.$event->id);
+                    $image = new Image();
+                    $image->event_id = $event->id;
+                    $image->name = $name;
+                    $image->save();
+
+                    echo "Uploaded succesfully";
+                }
+                else {
+                    echo '<div class="alert alert-warning"><strong>Warning!</strong>Acceptable only jpeg and png formats</div>';
+                }
+            }
+
+        }
 
         return redirect()->route('events.show',$event);
     }

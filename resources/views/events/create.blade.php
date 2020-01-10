@@ -16,11 +16,13 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('events.store') }}">
+                <form method="post" action="{{ route('events.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     Title: <input type="text" name="title" value="{{ old("title") }}">
                     <br>
                     Description: <input type="text" name="description" value="{{ old("description") }}">
+                    <br>
+                    Images: <input type="file" name="images[]"/>
                     <br>
                     <input type="submit" value="Create">
                 </form>
