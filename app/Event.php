@@ -26,9 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUserId($value)
-<<<<<<< HEAD
  * @property-read int|null $images_count
-=======
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\EventDate[] $eventDates
  * @property-read int|null $event_dates_count
  * @property int $places
@@ -37,7 +35,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event wherePrice($value)
  * @property int $isFree
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereIsFree($value)
->>>>>>> b89eda3e08ee6d1147d730bc31ef4dedefbd7051
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
  */
 class Event extends Model
 {
