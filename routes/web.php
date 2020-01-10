@@ -21,3 +21,5 @@ Route::resource('/calendar', "CalendarController")->middleware('auth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('user/{id}/events','UserController@events');
