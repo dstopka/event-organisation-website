@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\EventDate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -15,8 +16,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
-        return view('events.index')->withEvents($events);
+        $dates = EventDate::all();
+        $data = DB::select('select * from events A join event_dates B on A.id = B.event_id');
+        return view('events.index', compact('data'));
     }
 
     /**

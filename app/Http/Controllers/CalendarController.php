@@ -15,8 +15,9 @@ class CalendarController extends Controller
     public function index()
     {
         $dates = EventDate::all();
-        $data = DB::select('select * from events A join event_dates B on A.id = B.event_id');
-        return view('calendars.index', compact('data'));
+        $data = DB::select('select * from (select * from tickets A join event_dates B 
+                                    on A.eventDate_id = B.id where A.user_id = ' . \Auth::id() . ') C join events D on  C.event_id = D.id');
+        return view('calendar.index', compact('data'));
     }
 
 
