@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function events()
     {
-        $data = DB::select('select * from events A join event_dates B on A.id = B.event_id 
+        $data = DB::select('select A.id, A.title, A.description,  A.user_id, A.places,  A.price, A.isFree from events A join event_dates B on A.id = B.event_id 
                             where A.user_id = ' . \Auth::id());
         $events = [];
         foreach($data as $event)
