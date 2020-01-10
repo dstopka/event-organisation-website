@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EventDate;
+use App\Ticket;
 use Illuminate\Http\Request;
 
 class EventDateController extends Controller
@@ -50,6 +51,22 @@ class EventDateController extends Controller
     public function destroy(EventDate $eventDate)
     {
         $eventDate->delete();
+        return redirect()->back();
+    }
+
+    public function joinOnEvent($id)
+    {
+        $eventDate = EventDate::find($id);
+        if ($eventDate->free_places > 0) {
+            $eventDate->free_places--;
+            $eventDate->save();
+
+            $ticket = new Ticket();
+            $ticket->user_id = \Auth::id();
+            $ticket->eventDate_id = $id;
+            $ticket->save();
+        }
+
         return redirect()->back();
     }
 }

@@ -22,3 +22,4 @@ Route::resource('/event_date',"EventDateController",['only' => ['show','destroy'
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('event_date/{id}/join','EventDateController@joinOnEvent');//->middleware('auth');
