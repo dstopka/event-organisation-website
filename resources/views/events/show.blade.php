@@ -14,6 +14,8 @@
 
                 @markdown($event->description)
 
+                <div id="map"></div>
+
                 @foreach ($images as $image)
                     <img src="{{'/'.$image->name}}" alt="{{basename($image->name)}}">
                 @endforeach
@@ -35,4 +37,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/map.js') }} "></script>
 @endsection
