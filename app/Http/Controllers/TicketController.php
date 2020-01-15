@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\User;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
+    public function cart()
+    {
+
+        return view("ticket.cart");
+    }
     /**
      * Display a listing of the resource.
      *

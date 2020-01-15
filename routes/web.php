@@ -31,3 +31,4 @@ Route::get('user/{id}/events','UserController@events');
 
 Route::get('event_date/{id}/join','EventDateController@joinOnEvent');//->middleware('auth');
 
+Route::get('cart','TicketController@cart')->middleware('auth');

@@ -64,6 +64,10 @@ class EventDateController extends Controller
             $ticket = new Ticket();
             $ticket->user_id = \Auth::id();
             $ticket->eventDate_id = $id;
+            if($eventDate->event->price==0)
+                $ticket->is_paid = true;
+            else
+                $ticket->is_paid = false;
             $ticket->save();
         }
 

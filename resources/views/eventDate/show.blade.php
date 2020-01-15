@@ -9,7 +9,15 @@
                 <br>
                 <strong>Free places: {{ $eventDate->free_places }}</strong>
                 <br>
-                <strong><a href="{{ $eventDate->id."/join" }}">Join</a></strong>
+                @if(auth()->user()->tickets->where('eventDate_id','=',$eventDate->id)->count()==0)
+                    @if($eventDate->event->price == 0)
+                        <strong><a href="{{ $eventDate->id."/join" }}">Join</a></strong>
+                    @else
+                        <strong><a href="{{ $eventDate->id."/join" }}">Add to cart</a></strong>
+                    @endif
+                @else
+                    <strong><a href="">Your ticket</a></strong> <!-- TODO -->
+                @endif
             </div>
         </div>
     </div>
