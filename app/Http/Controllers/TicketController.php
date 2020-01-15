@@ -19,7 +19,8 @@ class TicketController extends Controller
                              from events A 
                              join event_dates B on A.id = B.event_id 
                              join tickets T on B.id = T.eventDate_id 
-                             where T.is_paid = false 
+                             where T.is_paid = false
+                             and T.user_id = '.auth()->id().'
                              order by B.start');
             $sum = 0;
             foreach ($data as $i)
@@ -48,6 +49,7 @@ class TicketController extends Controller
                              join event_dates B on A.id = B.event_id 
                              join tickets T on B.id = T.eventDate_id 
                              where T.is_paid = true 
+                             and T.user_id = '.auth()->id().'
                              order by B.start');
         return view("ticket.index")->withTickets($data);
     }
