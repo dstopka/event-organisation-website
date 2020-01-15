@@ -33,6 +33,12 @@
                         </tr>
                     </table>
                     <br>
+                    Set location:
+                    <input id="latitude" type="text" name="latitude" value="{{ old('latitude')}}" required>
+                    <input id="longtitude" type="text" name="longtitude" value="{{ old('longtitude')}}" required>
+                    <br>
+                    <div id="map"></div>
+                    <br>
                     Number of places: <input type="number" name="places" value="{{ old("places") }}">
                     <br>
                     Price: <input type="number" name="price" value="{{ old("price") }}">$
@@ -46,4 +52,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/autosearch.js') }} "></script>
 @endsection

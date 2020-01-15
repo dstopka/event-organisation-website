@@ -40,5 +40,6 @@
 @endsection
 
 @section('scripts')
+    <script>var event = {!! json_encode($event) !!};</script>
     <script src="{{ asset('js/map.js') }} "></script>
 @endsection

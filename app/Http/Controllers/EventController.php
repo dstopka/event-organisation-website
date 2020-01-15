@@ -52,6 +52,8 @@ class EventController extends Controller
             'description' => 'required',
             'images' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg',
+            'latitude' => 'required|numeric',
+            'longtitude' => 'required|numeric',
             'start' => 'required',
             'end' => 'required',
             'places' => 'required',
@@ -62,6 +64,8 @@ class EventController extends Controller
         $event->title = $request->title;
         $event->description = $request->description;
         $event->user_id = \Auth::id();
+        $event->latitude = $request->latitude;
+        $event->longtitude = $request->longtitude;
         $event->price = $request->price;
         $event->places = $request->places;
         $event->isFree = false;
