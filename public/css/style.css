@@ -75,3 +75,5 @@ html, body {
 .align-vertically{
     text-align: center;
 }
+
+#map { height: 180px; }
