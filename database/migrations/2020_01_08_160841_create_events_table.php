@@ -21,7 +21,7 @@ class CreateEventsTable extends Migration
             $table->double('latitude', 8, 2);
             $table->double('longtitude', 8, 2);
             $table->bigInteger("places");
-            $table->bigInteger("price");
+            $table->float("price");
             $table->boolean('isFree');
             $table->timestamps();
         });

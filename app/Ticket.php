@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Ticket whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Ticket whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Ticket whereUserId($value)
+ * @property int $is_paid
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Ticket whereIsPaid($value)
  */
 class Ticket extends Model
 {

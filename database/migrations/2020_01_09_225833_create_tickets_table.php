@@ -17,6 +17,7 @@ class CreateTicketsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger("user_id");
             $table->bigInteger("eventDate_id");
+            $table->boolean("is_paid");
             $table->timestamps();
         });
     }

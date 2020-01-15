@@ -3,10 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class TicketController extends Controller
 {
+    public function cart(Request $request)
+    {
+        if(!isset($request->card_no)) {
+            //$tickets = User::find(auth()->id())->tickets->where('is_paid', '=', false);
+            $data = DB::select('select A.title, A.price, B.id, DATE_FORMAT(B.start, "%b %d") as day,
+                            DATE_FORMAT(B.start, "%l %i %p") as hour, B.free_places
+                             from events A 
+                             join event_dates B on A.id = B.event_id 
+                             join tickets T on B.id = T.eventDate_id 
+                             where T.is_paid = false 
+                             order by B.start');
+            $sum = 0;
+            foreach ($data as $i)
+                $sum += $i->price;
+            return view("ticket.cart")->withTickets($data)->withSum($sum);
+        }
+        else
+        {
+            foreach (auth()->user()->tickets as $ticket) {
+                $ticket->is_paid = 1;
+                $ticket->save();
+                return redirect()->route("tickets.index");
+            }
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +42,14 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::select('select A.title, A.price, B.id, DATE_FORMAT(B.start, "%b %d") as day,
+                            DATE_FORMAT(B.start, "%l %i %p") as hour, B.free_places
+                             from events A 
+                             join event_dates B on A.id = B.event_id 
+                             join tickets T on B.id = T.eventDate_id 
+                             where T.is_paid = true 
+                             order by B.start');
+        return view("ticket.index")->withTickets($data);
     }
 
     /**

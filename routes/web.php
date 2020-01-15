@@ -20,7 +20,7 @@ Route::resource('/events','EventController')->middleware('auth');
 
 Route::resource('/calendar', "CalendarController")->middleware('auth');
 Route::resource('/event_date',"EventDateController",['only' => ['show','destroy']])->middleware('auth');
-
+Route::resource('/tickets','TicketController')->middleware('auth');
 
 Auth::routes();
 
@@ -31,3 +31,4 @@ Route::get('user/{id}/events','UserController@events');
 
 Route::get('event_date/{id}/join','EventDateController@joinOnEvent');//->middleware('auth');
 
+Route::match(['get', 'post'],'cart','TicketController@cart')->middleware('auth');
