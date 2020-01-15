@@ -19,7 +19,7 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->bigInteger("user_id");
             $table->bigInteger("places");
-            $table->bigInteger("price");
+            $table->float("price");
             $table->boolean('isFree');
             $table->timestamps();
         });
