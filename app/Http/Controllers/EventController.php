@@ -64,6 +64,8 @@ class EventController extends Controller
         $event->title = $request->title;
         $event->description = $request->description;
         $event->user_id = \Auth::id();
+//        $event->latitude = $_COOKIE['latitude'];
+//        $event->longtitude = $_COOKIE['longtitude'];
         $event->latitude = $request->latitude;
         $event->longtitude = $request->longtitude;
         $event->price = $request->price;
