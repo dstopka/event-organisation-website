@@ -14,7 +14,7 @@
                                 <div class="col-md-5"><h5><strong> <a
                                                 href="{{ route('event_date.show', $ticket->id) }}">{{ $ticket->title }}</a></strong>
                                     </h5></div>
-                                <div class="col-md-4"><h5><strong><a href="{{ route('tickets.show', $ticket->ticket_id) }}">Download ticket</a></strong></h5></div>
+                                <div class="col-md-4"><h5><strong><a href="{{ route('tickets.show', $ticket->ticket_id) }}" target="_blank">Download ticket</a></strong></h5></div>
                             </div>
                         </div>
                     </div>
