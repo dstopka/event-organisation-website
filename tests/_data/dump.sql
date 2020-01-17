@@ -31,7 +31,7 @@ CREATE TABLE `event_dates` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `event_dates` (
 
 LOCK TABLES `event_dates` WRITE;
 /*!40000 ALTER TABLE `event_dates` DISABLE KEYS */;
+INSERT INTO `event_dates` VALUES (1,1,'2020-01-25 12:00:00','2020-01-26 20:00:00',9999,NULL,NULL),(2,2,'2020-01-25 10:00:00','2020-01-25 18:00:00',100,NULL,NULL),(3,2,'2020-01-31 12:00:00','2020-01-31 20:00:00',100,NULL,NULL),(4,2,'2020-02-08 12:00:00','2020-02-08 20:00:00',100,NULL,NULL),(5,3,'2020-02-14 15:00:00','2020-02-15 06:00:00',100,NULL,NULL);
 /*!40000 ALTER TABLE `event_dates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +64,7 @@ CREATE TABLE `events` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,6 +73,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
+INSERT INTO `events` VALUES (1,'Pielgrzymka','Pielgrzymka papieska',3,50.06,19.91,10000,0.00,1,NULL,NULL),(2,'Szkolenie z Cyberbezpieczeństwa','Tematem przewodnim jest bezpieczeństwo w sieci oraz świadomość użytkowników',3,50.06,19.92,100,20.00,0,NULL,NULL),(3,'Project X','Zakończenie sesji!!!',3,50.06,19.92,100,20.00,0,NULL,NULL);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,7 +196,7 @@ CREATE TABLE `tickets` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,6 +205,7 @@ CREATE TABLE `tickets` (
 
 LOCK TABLES `tickets` WRITE;
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
+INSERT INTO `tickets` VALUES (1,2,1,1,NULL,NULL);
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +227,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -233,7 +236,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$irlKabgArAjF2oFhOMHfm.1ZGeTmyIi1CPmGhpLb0eavEZ8CRoQ8C',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$t0JmNMo2N8iHRBI7nkaO8u4oehyYtnWaK1bh8aYz8ldF.zumalkNS',NULL,NULL,NULL),(2,'João Paulo','joao.paulo@gmail.com',NULL,'$2y$10$hhJ1fQYaOGr4ySwtMIsWlO8901p1l6xa6rAjD.ZV93tAQcHMgeUFa',NULL,NULL,NULL),(3,'Testowiron','testo@gmail.com',NULL,'$2y$10$79gNFd6.HPwQGSgGcVFtoeMFvSM46MueH3/8TtG5i1EbnTOulgFf6',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -246,4 +249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-16  1:46:51
+-- Dump completed on 2020-01-17 14:43:02
