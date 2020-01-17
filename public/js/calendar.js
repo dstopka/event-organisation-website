@@ -7,6 +7,8 @@ $(document).ready(function () {
         }
     });
 
+    console.log(events);
+
     var calendar = $('#calendar').fullCalendar({
         editable: true,
         events: events,
@@ -20,57 +22,9 @@ $(document).ready(function () {
                 event.allDay = false;
             }
         },
-        // selectable: true,
-        // selectHelper: true,
-        // select: function (start, end, allDay) {
-        //     var title = prompt('Event Title:');
-        //
-        //     if (title) {
-        //         var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-        //         var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-        //
-        //         $.ajax({
-        //             url: SITEURL + "/fullcalendareventmaster/create",
-        //             data: 'title=' + title + '&start=' + start + '&end=' + end,
-        //             type: "POST",
-        //             success: function (data) {
-        //                 displayMessage("Added Successfully");
-        //             }
-        //         });
-        //         calendar.fullCalendar('renderEvent',
-        //             {
-        //                 title: title,
-        //                 start: start,
-        //                 end: end,
-        //                 allDay: allDay
-        //             },
-        //             true
-        //         );
-        //     }
-        //     calendar.fullCalendar('unselect');
-        // },
-
-        // eventDrop: function (event, delta) {
-        //     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-        //     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-        //     $.ajax({
-        //         url: SITEURL + '/fullcalendareventmaster/update',
-        //         data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,
-        //         type: "POST",
-        //         success: function (response) {
-        //             displayMessage("Updated Successfully");
-        //         }
-        //     });
-        // },
         eventClick: function (event) {
             window.location = '/events/' + event['event_id'];
         }
 
     });
 });
-
-// function displayMessage(message) {
-//     $(".response").html(
-//     "+message+");
-//     setInterval(function() { $(".success").fadeOut(); }, 1000);
-// }
