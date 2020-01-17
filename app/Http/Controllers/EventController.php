@@ -21,7 +21,7 @@ class EventController extends Controller
     public function index()
     {
 
-        $data = DB::select('select A.title, B.id, DATE_FORMAT(B.start, "%b %d") as day,
+        $data = DB::select('select A.title, B.id, B.event_id, DATE_FORMAT(B.start, "%b %d") as day,
                             DATE_FORMAT(B.start, "%l %i %p") as hour, B.free_places
                              from events A join event_dates B on A.id = B.event_id order by B.start');
 
