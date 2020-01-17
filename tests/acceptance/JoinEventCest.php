@@ -22,6 +22,9 @@ class JoinEventCest
 
         $I->seeElement('#calendar');
 
+        $I->seeElement('//span[text()="Pielgrzymka"]');
+        $I->dontSeeElement('//span[text()="Project X"]');
+
 
 
     }
