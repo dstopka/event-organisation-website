@@ -1,0 +1,9 @@
+0000000000000000000000000000000000000000 2099a113a943c67f2a1247609c9732acffe47a85 Karol Zborowski <krlzborowski@gmail.com> 1578513499 +0100	branch: Created from HEAD
+2099a113a943c67f2a1247609c9732acffe47a85 ee788013f806966ee073bf05726a79cb1a9b06ae Karol Zborowski <krlzborowski@gmail.com> 1578514775 +0100	commit: Add Image model
+ee788013f806966ee073bf05726a79cb1a9b06ae c7ba1af1fb621b77a22269b9fb7621b80f084dce Karol Zborowski <krlzborowski@gmail.com> 1578516445 +0100	commit: Implement Image migration
+c7ba1af1fb621b77a22269b9fb7621b80f084dce e41cfcf846b792fa3dbed113112fea5d4d110146 Karol Zborowski <krlzborowski@gmail.com> 1578517158 +0100	commit: Fix Image migration
+e41cfcf846b792fa3dbed113112fea5d4d110146 4818ffb1077c88dd22d82e7412ab475cb5d734f3 Karol Zborowski <krlzborowski@gmail.com> 1578517565 +0100	commit: Implement Image model
+4818ffb1077c88dd22d82e7412ab475cb5d734f3 1c74174f833c78fc2af1ecf115fae882e4808421 Karol Zborowski <krlzborowski@gmail.com> 1578624010 +0100	commit: Add storage of images
+1c74174f833c78fc2af1ecf115fae882e4808421 58b884bc6c6cd0c7b2c5cd04d3f5e366dbe10181 Karol Zborowski <krlzborowski@gmail.com> 1578674936 +0100	commit: Fix deleting images on destroying event
+58b884bc6c6cd0c7b2c5cd04d3f5e366dbe10181 fb56669c43cfcf634034571961fce408b65dd208 Karol Zborowski <krlzborowski@gmail.com> 1578677135 +0100	commit (merge): Resolve conflicts
+fb56669c43cfcf634034571961fce408b65dd208 94cfa0d53395e70960c81e11bc30314e8e2737e6 Karol Zborowski <krlzborowski@gmail.com> 1578684964 +0100	commit: Regenerate ide helpers

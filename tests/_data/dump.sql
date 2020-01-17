@@ -236,7 +236,9 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+
 INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$ZW0db5I2MT0.mS578Tg.meV6OXnnedlx/5RYlPffejxRBhQ.1axG2',NULL,NULL,NULL),(2,'João Paulo','joao.paulo@gmail.com',NULL,'$2y$10$dii2A1ulQBvJxqvrenpoge2neIMp6QoGkBly.NP20p7y4Kg.UaydK',NULL,NULL,NULL),(3,'Testowiron','testo@gmail.com',NULL,'$2y$10$0MVrnwc7BUaXcCEVRO3jR.QXi1lcNueII.vFDNIyND6LYYHLmaoe.',NULL,NULL,NULL);
+
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -250,3 +252,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-01-17 14:04:37
+

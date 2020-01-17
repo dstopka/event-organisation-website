@@ -1,0 +1,6 @@
+0000000000000000000000000000000000000000 94cfa0d53395e70960c81e11bc30314e8e2737e6 Karol Zborowski <krlzborowski@gmail.com> 1578699580 +0100	branch: Created from HEAD
+94cfa0d53395e70960c81e11bc30314e8e2737e6 06a845d6eec9ead2e926b7f70999d0a1be3e97f4 Karol Zborowski <krlzborowski@gmail.com> 1578922045 +0100	commit: Add static map
+06a845d6eec9ead2e926b7f70999d0a1be3e97f4 06a845d6eec9ead2e926b7f70999d0a1be3e97f4 Karol Zborowski <krlzborowski@gmail.com> 1578924384 +0100	Branch: renamed refs/heads/feature-image-update to refs/heads/feature-map
+06a845d6eec9ead2e926b7f70999d0a1be3e97f4 afd08537687e622638fa100afe57e0200e60528a Karol Zborowski <krlzborowski@gmail.com> 1579110815 +0100	commit: Add geolocation of event
+afd08537687e622638fa100afe57e0200e60528a 5f41151515e6133ec633a6acf085522a61fb4a77 Karol Zborowski <krlzborowski@gmail.com> 1579113516 +0100	commit: Update create event view and implement autosearch script
+5f41151515e6133ec633a6acf085522a61fb4a77 e6a782d51a19767c2ce93d023ebb07ef57b3ed53 Karol Zborowski <krlzborowski@gmail.com> 1579113688 +0100	pull origin master: Merge made by the 'recursive' strategy.
