@@ -1,0 +1,17 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://krlzborowski@bitbucket.org/ddgg/php_2019_witryna_do_organizacji_wydarzen.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[branch "feature-photo-insertion"]
+	remote = origin
+	merge = refs/heads/feature-photo-insertion
+[branch "feature-map"]
+	remote = origin
+	merge = refs/heads/feature-map

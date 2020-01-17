@@ -18,6 +18,11 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->bigInteger("user_id");
+            $table->double('latitude', 8, 2);
+            $table->double('longtitude', 8, 2);
+            $table->bigInteger("places");
+            $table->float("price");
+            $table->boolean('isFree');
             $table->timestamps();
         });
     }

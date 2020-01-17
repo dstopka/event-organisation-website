@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h2>New book:</h2>
+                <h2>New event:</h2>
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -16,11 +16,36 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('events.store') }}">
+                <form method="post" action="{{ route('events.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     Title: <input type="text" name="title" value="{{ old("title") }}">
                     <br>
                     Description: <input type="text" name="description" value="{{ old("description") }}">
+                    <br>
+                    <table>
+                        <tr>
+                            <th>Date/Time start</th>
+                            <th>Date/Time end</th>
+                        </tr>
+                        <tr>
+                            <td><input type="datetime-local" name="start" value="{{ old("start") }}"></td>
+                            <td><input type="datetime-local" name="end" value="{{ old("end") }}"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    Set location:
+                    <input id="latitude" type="text" name="latitude" value="{{ old('latitude')}}">
+                    <input id="longtitude" type="text" name="longtitude" value="{{ old('longtitude')}}">
+                    <br>
+{{--                    <div id="map"></div>--}}
+                    <br>
+                    Number of places: <input type="number" name="places" value="{{ old("places") }}">
+                    <br>
+                    Price: <input type="number" name="price" value="{{ old("price") }}">$
+                    <br>
+                    Is free? <input type="checkbox" name="isFree" value="{{ old("isFree") }}">
+                    <br>
+                    Images: <input type="file" name="images[]" multiple="multiple"/>
                     <br>
                     <input type="submit" value="Create">
                 </form>
@@ -28,3 +53,7 @@
         </div>
     </div>
 @endsection
+
+{{--@section('scripts')--}}
+{{--    <script src="{{ asset('js/autosearch.js') }} "></script>--}}
+{{--@endsection--}}
