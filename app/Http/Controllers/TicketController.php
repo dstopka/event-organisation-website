@@ -33,8 +33,8 @@ class TicketController extends Controller
             foreach (auth()->user()->tickets as $ticket) {
                 $ticket->is_paid = 1;
                 $ticket->save();
-                return redirect()->route("tickets.index");
             }
+            return redirect()->route("tickets.index");
         }
     }
     /**
