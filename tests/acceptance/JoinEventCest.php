@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class JoinEventCest
 {
@@ -9,5 +9,20 @@ class JoinEventCest
     // tests
     public function tryToTest(AcceptanceTester $I)
     {
+        $I->amOnPage('/calendar');
+        $I->dontSeeElement('#calendar');
+        $I->seeCurrentUrlEquals('/login');
+
+        $I->fillField('email', 'joao.paulo@gmail.com');
+        $I->fillField('password', 'jp2gmd2137');
+
+        $I->click('#login_button');
+
+        $I->seeCurrentUrlEquals('/calendar');
+
+        $I->seeElement('#calendar');
+
+
+
     }
 }
