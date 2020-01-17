@@ -29,9 +29,20 @@ class JoinEventCest
 
         $I->seeElement('//div//strong[contains(., "Project X")]');
 
-        $I->click( '//div//strong[contains(., "Project X")]/../../../div//a[text()="Details"]');
+        $I->click('//div//strong[contains(., "Project X")]/..');
 
+        $I->seeInCurrentUrl('/events/');
+        $I->dontSeeElement('//a[text()="edit"]');
+        $I->dontSeeElement('//input[@value="Delete"]');
+        $I->seeElement('//a[text()="Return to events list"]');
+        $I->click('//a[text()="Return to events list"]');
 
+        $I->click( '//div//strong[contains(., "Project X")]/../../../../div//a[text()="Details"]');
+
+        $I->seeInCurrentUrl('/event_date/');
+
+        $I->seeElement('//a[text()="Add to cart"] | //a[text()="Join"]');
+        $I->click('//a[ends-with(@href, "/join")]');
 
     }
 }
