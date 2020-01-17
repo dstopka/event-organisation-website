@@ -25,6 +25,12 @@ class JoinEventCest
         $I->seeElement('//span[text()="Pielgrzymka"]');
         $I->dontSeeElement('//span[text()="Project X"]');
 
+        $I->amOnPage('/events');
+
+        $I->seeElement('//div//strong[contains(., "Project X")]');
+
+        $I->click( '//div//strong[contains(., "Project X")]/../../../div//a[text()="Details"]');
+
 
 
     }
