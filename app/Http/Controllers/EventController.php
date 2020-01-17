@@ -50,12 +50,15 @@ class EventController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-//            'images' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg',
             'start' => 'required',
             'end' => 'required',
+            'images' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg',
             'latitude' => 'required|numeric',
             'longtitude' => 'required|numeric',
+            'start' => 'required',
+            'end' => 'required',
+
             'places' => 'required',
             'price' => 'required',
         ]);

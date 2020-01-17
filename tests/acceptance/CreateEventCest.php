@@ -9,6 +9,7 @@ class CreateEventCest
     // tests
     public function tryToTest(AcceptanceTester $I)
     {
+
         $I->wantTo('create new event');
 
         $I->amOnPage('/home');
