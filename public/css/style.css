@@ -76,4 +76,16 @@ html, body {
     text-align: center;
 }
 
+h5>a{
+    text-decoration: none;
+    color: #636b6f;
+}
+
+h5>a:hover{
+    text-decoration: none;
+    color: #3D3D3B;
+}
+
+
+
 #map { height: 180px; }

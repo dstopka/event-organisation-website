@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3 text-center"><h4>{{$event->day}}</h4>{{$event->hour}}</div>
-                                <div class="col-md-6"><h5> <strong>{{ $event->title }}</strong> </h5></div>
+                                <div class="col-md-6"><h5><a href="{{ route('events.show', $event->event_id) }}"><strong>{{ $event->title }}</strong></a></h5></div>
                                 <div class="col-md-3">
                                     @if($event->free_places != 0)
                                         <div class="btn btn-details"><a href="{{ route('event_date.show', $event->id) }}">Details</a> </div>
