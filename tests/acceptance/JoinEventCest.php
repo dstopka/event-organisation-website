@@ -42,7 +42,36 @@ class JoinEventCest
         $I->seeInCurrentUrl('/event_date/');
 
         $I->seeElement('//a[text()="Add to cart"] | //a[text()="Join"]');
-        $I->click('//a[ends-with(@href, "/join")]');
+        $I->click('//a[contains(@href, "/join")]');
 
+        $I->dontSeeElement('//a[text()="Add to cart"] | //a[text()="Join"]');
+        $I->seeElement('//a[text()="Your cart"]');
+
+        $I->click('//a[text()="Your cart"]');
+
+        $I->seeCurrentUrlEquals('/cart');
+
+        $I->click('Pay');
+        $I->seeCurrentUrlEquals('/cart');
+
+        $I->fillField('card_no', '11111111');
+        $I->click('Pay');
+        $I->seeCurrentUrlEquals('/tickets');
+
+        $I->seeElement( '//div//strong[contains(., "Project X")]');
+
+        $I->click( '//div//strong[contains(., "Project X")]/../../../../div//a[text()="Download ticket"]');
+
+        $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
+            $handles=$webdriver->getWindowHandles();
+            $last_window = next($handles);
+            $webdriver->switchTo()->window($last_window);
+        });
+
+        $I->seeElement( '//embed[@id="plugin"]');
+
+        $I->executeInSelenium(function (\Facebook\WebDriver\Remote\RemoteWebDriver $webdriver) {
+            $webdriver->close();
+        });
     }
 }
