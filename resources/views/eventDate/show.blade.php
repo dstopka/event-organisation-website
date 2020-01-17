@@ -15,8 +15,10 @@
                     @else
                         <strong><a href="{{ $eventDate->id."/join" }}">Add to cart</a></strong>
                     @endif
+                @elseif(auth()->user()->tickets->where('eventDate_id','=',$eventDate->id)->first()->is_paid == 0)
+                    <strong><a href="{{ "/cart" }}">Your cart</a></strong>
                 @else
-                    <strong><a href="">Your ticket</a></strong> <!-- TODO -->
+                    <strong><a href="{{"/tickets/".auth()->user()->tickets->where('eventDate_id','=',$eventDate->id)->first()->id}}" target="_blank">Your ticket</a></strong> <!-- TODO -->
                 @endif
             </div>
         </div>
