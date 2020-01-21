@@ -80,8 +80,12 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
-                                    <a id="my_events" class="dropdown-item" href="{{ '/user/' . Illuminate\Support\Facades\Auth::id() . '/events'}}">
-                                        {{__('My Events')}}
+                                    <a class="dropdown-item" href="{{ '/user/' . Illuminate\Support\Facades\Auth::id() . '/events'}}">
+                                        My Events
+                                    </a>
+
+                                    <a id="cart" class="dropdown-item" href="/cart">
+                                        My Cart
                                     </a>
                                 </div>
                             </li>
