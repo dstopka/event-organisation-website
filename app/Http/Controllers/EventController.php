@@ -175,9 +175,11 @@ class EventController extends Controller
         DB::table('images')->where('event_id', $event->id)->delete();
         Storage::deleteDirectory('public/images/'.$event->id);
 
-        foreach ($event->eventDates as $eventDate)
+        foreach ($event->eventDates as $eventDate) {
             $eventDate->delete();
-
+//            foreach ($eventDate->tickets as $ticket)
+//                $ticket->delete();
+        }
 
         $event->delete();
 

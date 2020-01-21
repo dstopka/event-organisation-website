@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\EventDate whereStart($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\EventDate whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Ticket[] $tickets
+ * @property-read int|null $tickets_count
  */
 
 class EventDate extends Model
@@ -33,5 +35,9 @@ class EventDate extends Model
     public function event()
     {
         return $this->belongsTo('App\Event');
+    }
+
+    public function tickets(){
+        return $this->hasMany('App\Ticket');
     }
 }

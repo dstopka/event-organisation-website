@@ -27,8 +27,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('user/{id}/events','UserController@events');
+Route::get('/user/{id}/events','UserController@events');
 
-Route::get('event_date/{id}/join','EventDateController@joinOnEvent');//->middleware('auth');
+Route::get('/event_date/{id}/join','EventDateController@joinOnEvent');//->middleware('auth');
 
-Route::match(['get', 'post'],'cart','TicketController@cart')->middleware('auth');
+Route::match(['get', 'post'],'/cart','TicketController@cart')->middleware('auth');
