@@ -81,7 +81,11 @@
                                         {{ csrf_field() }}
                                     </form>
                                     <a class="dropdown-item" href="{{ '/user/' . Illuminate\Support\Facades\Auth::id() . '/events'}}">
-                                        {{__('My Events')}}
+                                        My Events
+                                    </a>
+
+                                    <a id="cart" class="dropdown-item" href="/cart">
+                                        My Cart
                                     </a>
                                 </div>
                             </li>
