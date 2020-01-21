@@ -36,6 +36,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event wherePrice($value)
  * @property int $isFree
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereIsFree($value)
+ * @property float $latitude
+ * @property float $longtitude
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Image[] $images
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereLongtitude($value)
  */
 class Event extends Model
 {

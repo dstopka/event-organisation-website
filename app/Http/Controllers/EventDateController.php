@@ -50,6 +50,8 @@ class EventDateController extends Controller
      */
     public function destroy(EventDate $eventDate)
     {
+//        foreach ($eventDate->tickets as $ticket)
+//            $ticket->delete();
         $eventDate->delete();
         return redirect()->back();
     }

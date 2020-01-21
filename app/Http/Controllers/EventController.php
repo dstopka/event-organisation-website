@@ -50,12 +50,15 @@ class EventController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
+            'start' => 'required',
+            'end' => 'required',
             'images' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg',
             'latitude' => 'required|numeric',
             'longtitude' => 'required|numeric',
             'start' => 'required',
             'end' => 'required',
+
             'places' => 'required',
             'price' => 'required',
         ]);
@@ -172,9 +175,11 @@ class EventController extends Controller
         DB::table('images')->where('event_id', $event->id)->delete();
         Storage::deleteDirectory('public/images/'.$event->id);
 
-        foreach ($event->eventDates as $eventDate)
+        foreach ($event->eventDates as $eventDate) {
             $eventDate->delete();
-
+//            foreach ($eventDate->tickets as $ticket)
+//                $ticket->delete();
+        }
 
         $event->delete();
 
