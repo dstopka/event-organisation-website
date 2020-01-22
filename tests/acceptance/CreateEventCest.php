@@ -46,8 +46,10 @@ class CreateEventCest
 
         $I->click('Deadline projektu z PHP');
         $I->see('Deadline projektu z PHP');
+        $I->click('//div/h4[contains(., "Available dates:")]/../*[4]');
+        $I->seeCurrentUrlEquals('/event_date/6');
+        $I->see('Deadline projektu z PHP');
         $I->click('Deadline projektu z PHP');
-        $I->seeCurrentUrlEquals('/events/4');
         $I->see('Zajęcia z zaawansowanego programowania PHP, na których zostana przedstawione projekty');
         $I->click('edit');
         $I->fillField('title', 'Ostateczny deadline projektu z PHP');
